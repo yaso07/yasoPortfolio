@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, AnimatePresence } from "framer-motion"
-import { Printer } from "lucide-react"
+import { FileText, Printer } from "lucide-react"
 import { useState } from "react"
 
 export default function PrintButton() {
@@ -14,6 +14,7 @@ export default function PrintButton() {
 
   return (
     <>
+      
       <motion.div
         className="fixed bottom-8 right-8 z-50 print:hidden"
         initial={{ scale: 0 }}
@@ -32,7 +33,7 @@ export default function PrintButton() {
           onClick={handlePrint}
         >
           <motion.div animate={{ rotate: isHovered ? 360 : 0 }} transition={{ duration: 0.3 }}>
-            <Printer size={24} />
+            <FileText size={24} />
           </motion.div>
         </motion.button>
 
@@ -47,7 +48,7 @@ export default function PrintButton() {
             >
               {showTip ? (
                 <div className="flex flex-col items-center">
-                  <p className="font-semibold">👋 My Resume!</p>
+                  <p className="font-semibold">👋 View My Resume!</p>
                   <p className="text-sm text-muted-foreground">Click to get a copy</p>
                 </div>
               ) : (
@@ -57,52 +58,6 @@ export default function PrintButton() {
           )}
         </AnimatePresence>
       </motion.div>
-
-      {/* Initial tooltip animation */}
-      <AnimatePresence>
-        {showTip && (
-          <motion.div
-            className="fixed bottom-28 right-8 z-50 print:hidden"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ delay: 1, duration: 0.3 }}
-          >
-            <motion.div
-              className="w-32 h-32"
-              animate={{
-                y: [0, -10, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: 3,
-                repeatType: "reverse",
-              }}
-            >
-              <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <motion.path
-                  d="M50 90 L50 10"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.5, repeat: 3 }}
-                />
-                <motion.path
-                  d="M30 30 L50 10 L70 30"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  initial={{ pathLength: 0 }}
-                  animate={{ pathLength: 1 }}
-                  transition={{ duration: 1.5, repeat: 3 }}
-                />
-              </svg>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   )
 }
