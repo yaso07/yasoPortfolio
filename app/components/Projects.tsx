@@ -56,25 +56,25 @@ const projects: Project[] = [
     link: "https://amazing-insight-415210-staging.web.app/",
     mediaType: 'image'
   },
-  {
-    id: 4,
-    title: "Olivier Mythodrama",
-    description: `Developed and maintained the front-end of Olivier Mythodrama’s leadership development platform using React.js and Next.js
+//   {
+//     id: 4,
+//     title: "Olivier Mythodrama",
+//     description: `Developed and maintained the front-end of Olivier Mythodrama’s leadership development platform using React.js and Next.js
 
-Translated the Mythodrama methodology into interactive and engaging digital experiences for a global user base across 40+ countries.
+// Translated the Mythodrama methodology into interactive and engaging digital experiences for a global user base across 40+ countries.
 
-Built responsive, accessible UI components aligned with performance psychology and executive education goals.
+// Built responsive, accessible UI components aligned with performance psychology and executive education goals.
 
-Collaborated with cross-functional teams to deliver a high-impact learning experience for clients including Coca-Cola, HSBC, FedEx, Mercedes-Benz, and the United Nations.
+// Collaborated with cross-functional teams to deliver a high-impact learning experience for clients including Coca-Cola, HSBC, FedEx, Mercedes-Benz, and the United Nations.
 
-Ensured performance optimization and scalability for a platform used by world-renowned institutions like Harvard Business School and the World Economic Forum.`
-,
-    images: [
-      oma.src,
-    ],
-    link: "https://www.oliviermythodrama.com",
-    mediaType: 'image'
-  },
+// Ensured performance optimization and scalability for a platform used by world-renowned institutions like Harvard Business School and the World Economic Forum.`
+// ,
+//     images: [
+//       oma.src,
+//     ],
+//     link: "https://www.oliviermythodrama.com",
+//     mediaType: 'image'
+//   },
 ]
 
 export default function Projects({image}:{image:string}) {
@@ -168,7 +168,7 @@ export default function Projects({image}:{image:string}) {
             },
           }}
         >
-          {[...projects, ...projects].map((project, index) => (
+          {[...projects,...projects,...projects].map((project, index) => (
             <motion.div
               key={`${project.id}-${index}`}
               variants={cardVariants}

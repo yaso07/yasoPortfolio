@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import profile from '../../public/profile.jpeg'
+import profile from '../../public/images/l2442Fg1t73KQOLr%2BNgMmOBHGh3y0qSJxE.jpeg'
 
 export default function Hero() {
   return (
@@ -15,11 +15,11 @@ export default function Hero() {
         className="mb-8"
       >
         <Image
-          src={profile}
+          src={"blob:https://www.naukri.com/44f3ca03-be61-4581-ad16-f8216f43c9f5"}
           alt="Your Name"
           width={200}
           height={200}
-          className="rounded-full mx-auto border-4  border-primary"
+          className="rounded-full mx-auto border-4 object-cover overflow-hidden border-primary"
         />
       </motion.div>
       <motion.h1

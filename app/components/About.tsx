@@ -58,7 +58,7 @@ export default function About() {
         <motion.div className="w-full md:w-1/2" variants={itemVariants}>
           <motion.p className="text-lg mb-4" variants={itemVariants}>
             Hello! I'm Yasodharan, a passionate Front End developer with a keen eye for design and a love for creating
-            intuitive, user-friendly websites. With 3.5 years of experience in the field, I've had the opportunity to
+            intuitive, user-friendly websites. With 2+ years of experience in the field, I've had the opportunity to
             work on a wide range of projects, from small business websites to large-scale web applications.
           </motion.p>
           <motion.p className="text-lg mb-4" variants={itemVariants}>
