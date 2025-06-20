@@ -9,7 +9,7 @@ export default function PrintButton() {
   const [showTip, setShowTip] = useState(true)
 
   const handlePrint = () => {
-    window.open("https://drive.google.com/file/d/19F8rzyln8xJB53Y3Mc2A0q39dn5Pmlji/view?usp=sharing")
+    window.open("https://drive.google.com/file/d/1Y-bKev9KLWHueaP6GBAiykHOijleePbh/view?usp=drive_link")
   }
 
   return (
