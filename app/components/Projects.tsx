@@ -9,6 +9,7 @@ import OYM from '../../public/images/oym.png'
 import roc from '../../public/images/roc.png'
 import orrekie from '../../public/images/orrekie.png'
 import oma from '../../public/images/oma.png'
+import shiningMotors from '../../public/images/image.png'
 interface Project {
   id: number
   title: string
@@ -42,7 +43,7 @@ const projects: Project[] = [
     images: [
       OYM.src,
     ],
-    link: "https://oym-app.vercel.app/",
+    link: "https://app.optimiseyourmarketing.co.uk",
     mediaType: 'image'
   },
   {
@@ -53,9 +54,21 @@ const projects: Project[] = [
     images: [
       orrekie.src,
     ],
-    link: "https://amazing-insight-415210-staging.web.app/",
+    link: "https://amazing-insight-415210-production.web.app/",
     mediaType: 'image'
   },
+  {
+     id: 3,
+    title: "The shining Motors",
+    description: `Built the first version of Shining Motors, a vehicle service management platform using React.js and Node.js with Express, targeting customers, admins, and vendors.
+ Designed and implemented key modules: service booking, vehicle history, customer profiles, and a dedicated vendor dashboard to manage orders, service slots, and inventory.`,
+    images: [
+     shiningMotors.src,
+    ],
+    link: "https://dev.theshiningmotors.com/",
+    mediaType: 'image'
+  }
+
 //   {
 //     id: 4,
 //     title: "Olivier Mythodrama",
@@ -75,6 +88,7 @@ const projects: Project[] = [
 //     link: "https://www.oliviermythodrama.com",
 //     mediaType: 'image'
 //   },
+
 ]
 
 export default function Projects({image}:{image:string}) {
