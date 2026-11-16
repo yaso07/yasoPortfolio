@@ -13,7 +13,15 @@ export default function Resume() {
           {profile.location} · {profile.phone} · {profile.email}
         </p>
         <p>
-          GitHub: {profile.githubLabel}
+          Portfolio:{" "}
+          <a href={profile.portfolio} className="text-blue-700 underline">
+            {profile.portfolioLabel}
+          </a>
+          {" · "}
+          GitHub:{" "}
+          <a href={profile.github} className="text-blue-700 underline">
+            {profile.githubLabel}
+          </a>
         </p>
       </section>
 

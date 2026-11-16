@@ -7,6 +7,8 @@ export const profile = {
   phone: "+91 80726 87133",
   phoneHref: "tel:+918072687133",
   email: "yasoyasodharan29@gmail.com",
+  portfolio: "https://yasodevxtreme.netlify.app",
+  portfolioLabel: "yasodevxtreme.netlify.app",
   github: "https://github.com/yaso07",
   githubLabel: "github.com/yaso07",
   resumePath: "/Yasodharan-Raman-Resume.pdf",
