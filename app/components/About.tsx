@@ -1,91 +1,51 @@
 "use client"
 
-import { motion, useInView } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import Image from "next/image"
-import { useRef, useEffect, useState } from "react"
+import { motion } from "framer-motion"
+import { education, profile } from "@/lib/profile"
 
 export default function About() {
-  const ref = useRef(null)
-  const isInView = useInView(ref)
-  const [hasTriggered, setHasTriggered] = useState(false)
-
-  useEffect(() => {
-    if (isInView) {
-      setHasTriggered(true)
-    }
-  }, [isInView])
-
-  const containerVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        staggerChildren: 0.2,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-      },
-    },
-  }
-
   return (
-    <section id="about" className="py-20 px-4 md:px-6 overflow-hidden" ref={ref}>
-      <motion.h2
-        className="text-4xl md:text-5xl font-bold mb-10 text-center gradient-text"
-        initial={{ opacity: 0, y: -20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.5 }}
-      >
-        About Me
-      </motion.h2>
-      <motion.div
-        className="flex flex-col md:flex-row items-center justify-between gap-8"
-        variants={containerVariants}
-        initial="hidden"
-        animate={isInView && hasTriggered ? "visible" : "hidden"}
-      >
-        <motion.div className="w-full md:w-1/2" variants={itemVariants}>
-          <motion.p className="text-lg mb-4" variants={itemVariants}>
-            Hello! I'm Yasodharan, a passionate Front End developer with a keen eye for design and a love for creating
-            intuitive, user-friendly websites. With 2+ years of experience in the field, I've had the opportunity to
-            work on a wide range of projects, from small business websites to large-scale web applications.
-          </motion.p>
-          <motion.p className="text-lg mb-4" variants={itemVariants}>
-            My expertise lies in front-end development, with a strong focus on React and Next.js. I'm also well-versed
-            in back-end technologies and enjoy creating full-stack applications that are both powerful and elegant.
-          </motion.p>
-          <motion.p className="text-lg mb-6" variants={itemVariants}>
-            When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or
-            enjoying a good book on software architecture and design patterns.
-          </motion.p>
-          {/* <motion.div variants={itemVariants}>
-            <Button size="lg" asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
-              <a href="#contact">Get in Touch</a>
-            </Button>
-          </motion.div> */}
+    <section id="about" className="scroll-mt-24 mx-auto max-w-6xl px-5 py-20">
+      <div className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-[1.4rem] border border-white/10 bg-card/80 p-7 md:p-10"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">About</p>
+          <h2 className="mt-3 font-serif text-4xl italic leading-tight tracking-tight md:text-5xl">
+            Interfaces that stay fast after launch.
+          </h2>
+          <p className="mt-6 text-base leading-relaxed text-muted-foreground md:text-lg">{profile.summary}</p>
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground md:text-lg">{profile.summaryDetail}</p>
+          <p className="mt-6 text-sm text-muted-foreground">
+            Languages · {profile.languages.join(" and ")}
+          </p>
         </motion.div>
-        <motion.div className="w-full md:w-1/2 flex justify-center" variants={itemVariants}>
-          <Image
-            src="https://www.pixelstalk.net/wp-content/uploads/image11/A-minimalist-silhouette-of-Batman-against-a-dark-background-his-cape-flowing-slightly.jpg"
-            alt="Iron Man"
-            width={400}
-            height={400}
-            className="rounded-lg shadow-lg object-cover"
-          />
-        </motion.div>
-      </motion.div>
+
+        <motion.aside
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.08 }}
+          className="flex flex-col justify-between rounded-[1.4rem] border border-white/10 bg-[linear-gradient(180deg,hsl(24_40%_14%),hsl(30_10%_8%))] p-7"
+        >
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Education</p>
+          <div className="mt-8">
+            <p className="font-serif text-5xl italic leading-none">{education.score.split(" ")[1]}</p>
+            <p className="mt-2 text-sm text-muted-foreground">{education.score}</p>
+          </div>
+          <div className="mt-8">
+            <h3 className="text-xl font-medium tracking-tight">{education.degree}</h3>
+            <p className="mt-1 text-sm text-foreground/80">{education.field}</p>
+            <p className="mt-3 text-sm text-muted-foreground">{education.school}</p>
+            <p className="text-sm text-muted-foreground">
+              {education.location} · {education.period}
+            </p>
+          </div>
+        </motion.aside>
+      </div>
     </section>
   )
 }
-

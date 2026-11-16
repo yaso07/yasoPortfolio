@@ -1,140 +1,93 @@
+import { education, experience, profile, projects, skillGroups } from "@/lib/profile"
+
 export default function Resume() {
   return (
-    <div className="max-w-4xl mx-auto p-8 bg-white text-black print:p-6">
-      {/* Header */}
-      <header className="flex justify-between items-baseline mb-8">
-        <h1 className="text-3xl font-bold">Yasodharan Raman</h1>
-        <p className="text-xl">Front End Developer</p>
+    <div className="mx-auto max-w-4xl bg-white p-8 text-black print:p-6">
+      <header className="mb-6 flex items-baseline justify-between gap-4">
+        <h1 className="text-3xl font-bold">{profile.name}</h1>
+        <p className="text-lg">{profile.role}</p>
       </header>
 
-      {/* Contact Information */}
-      <section className="mb-8">
-        <h2 className="text-sm font-bold uppercase mb-2">Contact</h2>
-        <div className="grid grid-cols-2 gap-x-4">
-          <div>
-            <span className="font-bold">Phone: </span>
-            <span>8072687133</span>
-          </div>
-          <div>
-            <span className="font-bold">Location: </span>
-            <span>Salem, India</span>
-          </div>
-          <div>
-            <span className="font-bold">Email: </span>
-            <span>yasoyasodharan29@gmail.com</span>
-          </div>
-          <div>
-            <span className="font-bold">GitHub: </span>
-            <span>github.com/yaso07</span>
-          </div>
-        </div>
-      </section>
-
-      {/* Profile */}
-      <section className="mb-8">
-        <h2 className="text-sm font-bold uppercase mb-2">Profile</h2>
+      <section className="mb-6 text-sm">
         <p>
-          I am a Frontend Developer with backend experience in Node.js. I have a strong interest in backend development
-          and enjoy working with databases, APIs, and server-side technologies. My skills include JavaScript, Java,
-          React, Node.js, Express.js, HTML, and CSS. I enjoy building user-friendly applications and reliable systems.
-          Seeking a collaborative team where I can enhance my skills and contribute to impactful projects.
+          {profile.location} · {profile.phone} · {profile.email}
+        </p>
+        <p>
+          GitHub: {profile.githubLabel}
         </p>
       </section>
 
-      {/* Skills */}
-      <section className="mb-8">
-        <h2 className="text-sm font-bold uppercase mb-4">Skills</h2>
-        <ul className="list-disc pl-4 space-y-1">
-          <li>Languages: JavaScript, Java, C, TypeScript</li>
-          <li>Web Technologies: HTML, CSS</li>
-          <li>Frameworks & Libraries: React.js, Next.js, Angular, Express.js, Node.js</li>
-          <li>Databases: MySQL, MongoDB</li>
-          <li>Version Control: Git, GitHub</li>
-          <li>Other: Data Structures & Algorithms (DSA)</li>
+      <section className="mb-6">
+        <h2 className="mb-2 text-xs font-bold uppercase tracking-wide">Professional summary</h2>
+        <p className="text-sm leading-relaxed">{profile.summary}</p>
+      </section>
+
+      <section className="mb-6">
+        <h2 className="mb-2 text-xs font-bold uppercase tracking-wide">Technical skills</h2>
+        <ul className="space-y-1 text-sm">
+          {skillGroups.map((group) => (
+            <li key={group.title}>
+              <span className="font-semibold">{group.title}: </span>
+              {group.items.join(", ")}
+            </li>
+          ))}
         </ul>
       </section>
 
-      {/* Experience */}
-      <section className="mb-8 break-after-page">
-        <h2 className="text-sm font-bold uppercase mb-4">Experience</h2>
-
-        <div className="mb-6">
-          <div className="flex justify-between mb-1">
-            <h3 className="font-bold">Front End Developer</h3>
-            <span>Feb 2022 – Present</span>
+      <section className="mb-6">
+        <h2 className="mb-3 text-xs font-bold uppercase tracking-wide">Experience</h2>
+        {experience.map((job) => (
+          <div key={job.company} className="mb-4">
+            <div className="flex justify-between gap-4 text-sm">
+              <h3 className="font-bold">
+                {job.role}, {job.company}
+              </h3>
+              <span>{job.period}</span>
+            </div>
+            <p className="text-sm">{job.location}</p>
+            <ul className="mt-1 list-disc space-y-1 pl-4 text-sm">
+              {job.points.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
           </div>
-          <p className="mb-2">Foss Freaks</p>
-          <ul className="list-disc pl-4 space-y-2">
-            <li>Built and maintained full-stack applications.</li>
-            <li>Designed responsive and interactive UI components.</li>
-            <li>Developed APIs using Node.js for backend functionality.</li>
-            <li>Optimized application performance and created scalable APIs.</li>
-          </ul>
-        </div>
-
-        <div>
-          <div className="flex justify-between mb-1">
-            <h3 className="font-bold">Internship</h3>
-            <span>2023</span>
-          </div>
-          <p className="mb-2">Zoho</p>
-          <ul className="list-disc pl-4 space-y-2">
-            <li>Worked on backend optimization and automation projects.</li>
-            <li>Gained industry experience in software development best practices.</li>
-          </ul>
-        </div>
+        ))}
       </section>
 
-      {/* Education */}
-      {/* <section className="mt-[25px]">
-        <h2 className="text-sm font-bold uppercase mb-4">Education</h2>
-
-        <div>
-          <div className="flex justify-between mb-1">
-            <h3 className="font-bold">Karpagam Institute of Technology</h3>
-            <span>2019 – 2023</span>
+      <section className="mb-6">
+        <h2 className="mb-3 text-xs font-bold uppercase tracking-wide">Projects</h2>
+        {projects.map((project) => (
+          <div key={project.id} className="mb-4">
+            <div className="flex justify-between gap-4 text-sm">
+              <h3 className="font-bold">
+                {project.title} — {project.role}
+              </h3>
+              <span>{project.period}</span>
+            </div>
+            <ul className="mt-1 list-disc space-y-1 pl-4 text-sm">
+              {project.highlights.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
-          <p className="mb-2">B.E. Computer Science and Engineering – Coimbatore, India</p>
-        </div>
-      </section> */}
-
-      {/* Projects */}
-      <section className="mb-8 pt-[20px]">
-        <h2 className="text-sm font-bold uppercase mb-4">Projects</h2>
-
-        <div className="mb-4">
-          <h3 className="font-bold">Jersey Island Tourism Application – <a href="http://roc.je" className="text-blue-600">roc.je</a></h3>
-          <ul className="list-disc pl-4 space-y-1">
-            <li>Developed a Next.js app with server-side rendering for better SEO and performance.</li>
-            <li>Created a user-friendly UI for showcasing island attractions and accommodations.</li>
-            <li>Integrated real-time APIs for live updates and navigation.</li>
-          </ul>
-        </div>
-
-        <div className="mb-4">
-          <h3 className="font-bold">Automated Car Rental System</h3>
-          <ul className="list-disc pl-4 space-y-1">
-            <li>Built a car rental system with separate admin and client functionalities.</li>
-            <li>Streamlined booking and management processes.</li>
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="font-bold">Health Monitor</h3>
-          <ul className="list-disc pl-4 space-y-1">
-            <li>Developed a health tracking app with AI-powered food suggestions.</li>
-            <li>Implemented server-side rendering, Tailwind CSS, and API integrations.</li>
-          </ul>
-        </div>
+        ))}
       </section>
 
-      {/* Languages */}
+      <section className="mb-4">
+        <h2 className="mb-2 text-xs font-bold uppercase tracking-wide">Education</h2>
+        <div className="flex justify-between gap-4 text-sm">
+          <h3 className="font-bold">{education.school}</h3>
+          <span>{education.period}</span>
+        </div>
+        <p className="text-sm">
+          {education.degree}, {education.field} — {education.location}
+        </p>
+        <p className="text-sm">{education.score}</p>
+      </section>
+
       <section>
-        <h2 className="text-sm font-bold uppercase mb-4">Languages</h2>
-        <ul className="list-disc pl-4 space-y-1">
-          <li>Tamil</li>
-          <li>English</li>
-        </ul>
+        <h2 className="mb-2 text-xs font-bold uppercase tracking-wide">Languages</h2>
+        <p className="text-sm">{profile.languages.join(", ")}</p>
       </section>
     </div>
   )

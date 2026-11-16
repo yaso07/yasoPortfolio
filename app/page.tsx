@@ -1,23 +1,19 @@
 import Hero from "./components/Hero"
 import Projects from "./components/Projects"
+import Experience from "./components/Experience"
 import Skills from "./components/Skills"
-import Contact from "./components/Contact"
 import About from "./components/About"
-import { GET } from "./api/screenshot/route"
+import Contact from "./components/Contact"
 
-export default async function Home() {
-
-  const image=await (await GET()).json()
-  
-
+export default function Home() {
   return (
-    <main className="min-h-screen bg-background  text-foreground">
+    <main>
       <Hero />
-      <Projects {...{image}}/>
+      <Projects />
+      <Experience />
       <Skills />
       <About />
       <Contact />
     </main>
   )
 }
-
